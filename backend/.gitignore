@@ -1,0 +1,27 @@
+# Dependencies
+/node_modules
+
+# Build and Temp Files
+/dist
+/build
+/tmp
+
+# Environment Variables and Secrets
+.env
+.env.*
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# IDE/Editor Files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# .vscode/
+
+# Database files 
+*.sqlite
+*.db
+/data

@@ -1,0 +1,25 @@
+# Dependencies
+/node_modules
+
+# Build output directories
+/dist
+/build
+/out
+
+# Log and Error Files
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Environment Variables and Secrets
+.env
+.env.*
+.local
+.DS_Store
+
+# IDE/Editor Files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
