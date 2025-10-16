@@ -1,15 +1,20 @@
 const express = require('express')
 const connectDB = require('./config/db')
-require('dotenv').config()
+const dotenv = require('dotenv')
+const userRoutes = require('./routes/userRoutes')
+const { configDotenv } = require('dotenv')
 
+dotenv.config()
 const app = express()
+
+app.use(express.json())
 
 connectDB()
 
-app.get('/', (req,res) => {
-    res.send("It is working")
-})
+// user routes
+app.use('/api/users', userRoutes)
 
-app.listen(3000, () =>{
+
+app.listen(5000, () =>{
     console.log('server running successfully')
 })
