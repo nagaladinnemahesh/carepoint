@@ -41,15 +41,18 @@ const userSchema = new mongoose.Schema({
     bloodGroup: {
         type: String,
         enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
-        default: null
+        default: null,
+        required: function() {return this.role === 'Patient'}
     },
     specialization: {
         type: String,
-        default: null
+        default: null,
+        required: function() {return this.role === 'Doctor'}
     },
     experience: {
         type: Number,
-        default: null
+        default: null,
+        required: function() {return this.role === 'Doctor'}
     }
 }, { timestamps: true })
 
