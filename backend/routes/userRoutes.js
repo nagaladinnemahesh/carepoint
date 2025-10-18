@@ -83,6 +83,13 @@ router.post('/login', async (req, res) => {
     }
 })
 
+// logout
+
+router.post('/logout', (req,res) => {
+    res.clearCookie('token');
+    res.status(200).json({message: 'Logged out successfully'})
+})
+
 // only for doctors
 router.get('/doctor/dashboard', authMiddleware, roleMiddleware(['Doctor']), (req, res) => {
     res.send(`Hello Doctor ${req.user.name}, welcome to your dashboard!`)

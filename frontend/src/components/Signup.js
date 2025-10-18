@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './signup.css';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate();
   const [role, setRole] = useState('Patient');
   const [formData, setFormData] = useState({
     name: '',
@@ -44,6 +46,7 @@ function Signup() {
     try {
       const res = await axios.post('http://localhost:5000/api/users/signup', payload);
       alert(res.data.message);
+      navigate('/login');
     } catch (error) {
       alert(error.response?.data?.message || 'Signup failed');
     }
@@ -68,7 +71,7 @@ function Signup() {
           </button>
         </div>
 
-        <h3 className="text-center mb-3">Signup as {role}</h3>
+        {/* <h3 className="text-center mb-3">Signup as {role}</h3> */}
 
         <form onSubmit={handleSubmit}>
           <div className="row">
