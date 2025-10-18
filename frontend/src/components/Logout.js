@@ -10,7 +10,7 @@ function Logout(){
         Cookies.remove('role')
 
         alert('Logged out successfully')
-        navigate('/login')
+        navigate('/home')
     }, [navigate])
 
     return(

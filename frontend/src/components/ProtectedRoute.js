@@ -8,12 +8,12 @@ function ProtectedRoute({ children, allowedRoles }) {
 
   // Not logged in
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/home" />;
   }
 
   // Role not allowed
   if (!allowedRoles.includes(role)) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/home" />;
   }
 
   // Authorized
