@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const PatientProfile = () => {
   const [patientData, setPatientData] = useState('');
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -33,12 +35,20 @@ const PatientProfile = () => {
     fetchProfile();
   }, []);
 
+  const handleLogout = () => {
+    Cookies.remove('token')
+    Cookies.remove('role')
+    alert('Logout successfull')
+    navigate('/home')
+  }
+
   if (loading) return <p>Loading...</p>;
 
   return (
     <div className="container mt-5">
       <h2>Patient Profile</h2>
       <p>{patientData}</p>
+      <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.hero-section {
+  min-height: 80vh;
+  background-color: #f8f9fa;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

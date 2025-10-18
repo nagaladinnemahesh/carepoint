@@ -1,18 +1,22 @@
 import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
-import Signup from './components/signup'
-import Login from './components/login'
-import PatientProfile from './components/patientProfile';
-import DoctorDashboard from './components/doctorDashboard';
+import Home from './components/Home'
+import Signup from './components/Signup'
+import Login from './components/Login'
+import PatientProfile from './components/PatientProfile';
+import DoctorDashboard from './components/DoctorDashboard';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/signup' />} />
+      <Route path='/' element={<Navigate to='/home' />} />
+      <Route path='/home' element={<Home />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/login' element= {<Login />} />
-      <Route path="/patient/profile" element={<PatientProfile />} />
-      <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+      <Route path='/patient/profile' element={<ProtectedRoute allowedRoles={['Patient']}><PatientProfile /></ProtectedRoute>} />
+      <Route path='/doctor/dashboard' element={<ProtectedRoute allowedRoles={['Doctor']}><DoctorDashboard /></ProtectedRoute>} />
+      <Route path="*" element={<Login />} />
     </Routes>
   );
 }
